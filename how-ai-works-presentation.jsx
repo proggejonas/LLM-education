@@ -625,6 +625,7 @@ function PersonalToolsGrid() {
 }
 
 const slides = [
+  {
     section: "", color: C.blue,
     content: () => (
       <div style={{ textAlign: "center" }}>
