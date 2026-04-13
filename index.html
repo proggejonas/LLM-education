@@ -852,40 +852,40 @@ const slides = [
     title: "Microsoft 365 Copilot — for everyone",
     content: () => (
       <ToolSlide color="#0284c7" tools={[
-        { icon: "📝", name: "Word & PowerPoint", access: "Draft + rewrite", desc: "Draft documents from bullet points. Summarize long reports. Rewrite in different tones. Generate slides from your notes." },
-        { icon: "📊", name: "Excel", access: "Data in plain language", desc: "\"Show me the trend for Q4 by region\" — no formulas needed. Analyses data and explains patterns conversationally." },
-        { icon: "📧", name: "Outlook", access: "Email triage", desc: "Summarize long threads. Draft replies. Surface action items from conversations you've been CC'd on." },
-        { icon: "🎙️", name: "Teams", access: "Meeting intelligence", desc: "Real-time transcription, auto-summaries, action items. Ask Copilot to summarize any meeting you missed." },
-        { icon: "🔎", name: "Copilot Chat", access: "Semantic search", desc: "Search across all your files, emails, and meetings in one place. Ask 'What did we decide about X last month?'" },
+        { icon: "🎙️", name: "Meeting transcription & summaries", access: "Teams — try it today", desc: "Every Teams meeting can be transcribed and summarised automatically. Decisions, actions, attendees — all captured without anyone taking notes." },
+        { icon: "📋", name: "Custom summaries", access: "Prompt Copilot your way", desc: "Go beyond the default. Ask: \"Summarise as facilitator notes with: 1) Decisions made, 2) Actions with owner and deadline, 3) Parking lot items.\" The difference is significant." },
+        { icon: "🗒️", name: "Facilitator notes", access: "Before + after meetings", desc: "Before: ask Copilot to draft an agenda and talking points. After: turn the transcript into structured notes ready to share with the team." },
+        { icon: "🤖", name: "Build your own agent", access: "Microsoft Copilot Studio", desc: "Create a custom agent trained on your own documents — a team FAQ bot, an onboarding guide, a process assistant. No coding required." },
+        { icon: "📓", name: "Copilot Notebook", access: "Open-ended AI workspace", desc: "Paste in a document, transcript, or raw notes and have a conversation with the content. Good for sense-making and drafting from messy inputs." },
       ]} />
     ),
-    notes: "M365 Copilot is the lowest-friction starting point for anyone in the company. It lives in tools you already use. The highest-ROI feature for most people is Teams meeting summaries — you get the transcript, key decisions, and action items for any meeting you attended or missed. The second most useful feature is Copilot Chat's semantic search — you can ask questions across your entire Microsoft 365 workspace.",
+    notes: "The key shift here is from 'using the default' to 'prompting for what you actually need.' The default Teams summary is fine. A prompted summary — structured as facilitator notes, with decisions and actions clearly separated — is a different and much more useful output. Encourage people to try the custom summary prompt on their very next meeting. Copilot Studio is worth mentioning for anyone who manages a process or team FAQ — you can build a working agent in an afternoon without writing code.",
   },
 
   { section: "Part 08 · AutoStore Tools", color: "#7c3aed",
-    title: "GitHub Copilot + Cursor — for developers",
+    title: "GitHub Copilot — in the editor and in the terminal",
     content: () => (
       <ToolSlide color="#7c3aed" tools={[
-        { icon: "⌨️", name: "GitHub Copilot", access: "In your existing editor", desc: "Inline code completions, chat grounded in your codebase, test generation, PR descriptions. Plugs into VS Code, JetBrains, Neovim.", color: "#7c3aed" },
-        { icon: "🖱️", name: "Cursor — Inline (cmd+K)", access: "AI-native editor", desc: "Select any code and describe the change you want. Rewrites the selection based on your instruction.", color: "#059669" },
-        { icon: "🤖", name: "Cursor — Composer (cmd+I)", access: "Multi-file edits", desc: "Describe a change at a high level — 'add input validation to the checkout flow.' It plans which files to touch and edits them all.", color: "#059669" },
-        { icon: "🔗", name: "Cursor — Agent Mode", access: "Full task execution", desc: "Give it a task, let it run. Reads files, writes code, runs commands, checks errors, iterates. Agentic behavior in the editor.", color: "#059669" },
+        { icon: "💻", name: "Copilot in VS Code", access: "Developers", desc: "Code completions, chat grounded in your codebase, test generation, PR descriptions. AI pair programming as you write.", color: "#7c3aed" },
+        { icon: "⌨️", name: "GitHub Copilot CLI", access: "Anyone with terminal access", desc: "Use 'gh copilot suggest' to generate shell commands, scripts, and automation from plain English. No need to know the syntax — just describe what you want.", color: "#7c3aed" },
+        { icon: "🎨", name: "Create presentations & reports", access: "Copilot CLI", desc: "This page was built using GitHub Copilot CLI. Describe what you want to create — a dashboard, a report, a tool — and Copilot generates the scaffolding and code.", color: "#7c3aed" },
+        { icon: "🛠️", name: "Build tools and software", access: "Copilot CLI + VS Code", desc: "Describe a script, tool, or automation you need. Copilot generates the implementation. Iterate in plain language until it does what you want.", color: "#7c3aed" },
       ]} />
     ),
-    notes: "Both tools are for developers but they sit at different points on the autonomy spectrum. GitHub Copilot is integrated into your existing editor and great for line-by-line assistance and code chat. Cursor is an AI-native editor (built on VS Code, so familiar) with much deeper project context — it can understand and edit across your entire codebase, not just the current file. Cursor's Composer mode is the big differentiator: describe a change at a high level, it figures out all the files to touch. Great for refactors that would normally require understanding multiple interdependencies.",
+    notes: "The important thing to highlight here is the range. GitHub Copilot isn't just for people who already write code — the CLI use case is accessible to anyone who works in a terminal. And the 'build something' use case is a good concrete example: this very presentation was created using GitHub Copilot CLI. Describe what you want, get working code, iterate. Cursor is still available for deeper agentic editing across an entire project.",
   },
 
   { section: "Part 08 · AutoStore Tools", color: "#d97706",
-    title: "Databricks + Azure AI Foundry — data & platform",
+    title: "Databricks — prompting across AutoStore's datalake",
     content: () => (
       <ToolSlide color="#d97706" tools={[
-        { icon: "💬", name: "Databricks Genie", access: "Natural language SQL", desc: "Ask questions about company data in plain English — 'What were our top 10 customers last quarter?' Genie writes and runs the SQL for you.", color: "#d97706" },
-        { icon: "📈", name: "Databricks AI/BI", access: "Smart dashboards", desc: "Business intelligence dashboards where users can ask follow-up questions in natural language. No SQL needed to explore.", color: "#d97706" },
-        { icon: "🧪", name: "Azure AI Foundry — Playground", access: "Model experimentation", desc: "Compare different AI models side by side on your actual prompts before committing to a build. Fastest way to evaluate models.", color: "#dc2626" },
-        { icon: "🏗️", name: "Azure AI Foundry — RAG & Deploy", access: "Production AI", desc: "Connect AI to your internal documents. Build, fine-tune, and deploy AI endpoints with enterprise security and governance.", color: "#dc2626" },
+        { icon: "🔍", name: "Databricks AI/BI (One)", access: "Natural language across the datalake", desc: "Prompt directly across AutoStore's entire datalake. 'What is the trend for order completion rates by region over the last 6 months?' — no SQL, no analyst required.", color: "#d97706" },
+        { icon: "🗂️", name: "Genie Spaces", access: "Topic-specific AI assistants", desc: "Each Space is pre-configured for a business domain — Supply Chain, Sales, Operations. It understands the relevant tables, metrics, and terminology for that area.", color: "#d97706" },
+        { icon: "💬", name: "From question to insight", access: "Business users", desc: "Type the question, Genie writes and runs the SQL, returns the result. No need to know which tables exist or how to write a query.", color: "#d97706" },
+        { icon: "📈", name: "AI/BI Dashboards", access: "Smart dashboards", desc: "Dashboards where users can ask natural language follow-up questions directly in the view — drill in, filter, reframe — without going back to an analyst.", color: "#d97706" },
       ]} />
     ),
-    notes: "Two tools for more technical users. Databricks Genie is designed specifically for business users who aren't SQL experts — it removes the barrier between a question and an answer by generating the query itself. If you've ever asked a data analyst for a number, Genie is worth trying. Azure AI Foundry is the enterprise platform for building AI solutions — start with the playground to compare models on your actual use case, then use the RAG pipeline builder to connect AI to internal documents.",
+    notes: "The key message for Databricks: there are two levels. Databricks AI/BI (One) is the broad access — prompt across the entire datalake with any question. Genie Spaces go deeper — they're pre-configured for a specific topic, so they understand the domain context and give better answers for that area. Ask your data team if a Space already exists for your domain. If not, that's worth requesting — it's relatively straightforward to set up and makes a real difference to answer quality.",
   },
 
   // ── PART 9: GOING FURTHER ──
@@ -1469,29 +1469,28 @@ function ArticleApp() {
             tagline="AI built into the tools you already use every day"
             color="#0284c7"
             uses={[
-              "Word & PowerPoint: Draft documents, summarize long reports, rewrite content in different tones",
-              "Excel: Analyze data in plain language — \"show me the trend for Q4 by region\" — no formulas needed",
-              "Outlook: Summarize email threads, draft replies, surface action items",
-              "Teams: Real-time meeting transcription, auto-summaries, action items from any meeting",
-              "Copilot chat: Semantic search across all your files, emails, and meetings in one place",
+              "Meeting transcriptions & summaries: Every Teams meeting can be automatically transcribed and summarised — who said what, what was decided, what actions were assigned",
+              "Custom summaries: Go beyond the default. Prompt Copilot to structure it your way — \"Summarise as facilitator notes with: 1) Decisions made, 2) Actions with owner and deadline, 3) Parking lot items\"",
+              "Facilitator notes: Before a workshop, ask Copilot to draft an agenda and talking points. After, use it to turn the transcript into structured notes ready to share with the team",
+              "Build your own agent: In Microsoft Copilot Studio, create a custom agent trained on your own documents — a team FAQ bot, an onboarding guide, a process assistant — no coding required",
+              "Copilot Notebook: An open-ended AI workspace inside Microsoft 365 — paste in a doc, a transcript, or raw notes and have a conversation with the content",
             ]}
-            tip="Teams meeting summaries are one of the highest-ROI uses. Ask Copilot to summarize any meeting you missed — it pulls from the transcript and identifies decisions and action items. You can also ask follow-up questions about what was discussed."
+            tip="Try this right now: open any recent Teams meeting, click the Copilot button, and paste in: \"Give me facilitator notes with decisions, actions by owner, and open questions.\" The difference between the default summary and a prompted one is significant."
           />
 
           <ToolCard
             icon="⌨️"
             name="GitHub Copilot"
             access="Available to developers"
-            tagline="An AI pair programmer that lives inside your editor"
+            tagline="An AI pair programmer in your editor — and a tool-builder in your terminal"
             color="#7c3aed"
             uses={[
-              "Inline completions: Suggests the next line or entire block of code as you type",
-              "Chat: Ask questions about your codebase, explain unfamiliar code, suggest refactors",
-              "Test generation: Describe the behavior you want tested and it writes the unit tests",
-              "PR descriptions: Auto-generates pull request summaries from the diff",
-              "Multi-line completions: Write a comment describing what you need, get the full implementation",
+              "Copilot in VS Code: Code completions, inline edits, and a chat interface that understands your actual codebase — explain, refactor, test, and debug without leaving the editor",
+              "GitHub Copilot CLI: Use AI in the terminal to generate shell commands, scripts, and automation from plain English — 'create a script that monitors disk usage and alerts when above 80%'",
+              "Build presentations and reports: This very page was built using GitHub Copilot CLI — describe what you want to create and let it generate the scaffolding, code, and content",
+              "Build tools and software: Describe a tool you need, have Copilot generate the implementation, iterate in plain language — useful for internal scripts, dashboards, and automation",
             ]}
-            tip="The chat interface in your IDE is underrated. Select a function and ask 'What edge cases does this miss?' or 'Explain why this might fail at scale.' You get a response grounded in your actual code — not generic advice."
+            tip="The CLI use case is underrated for non-developers too. 'gh copilot suggest' turns plain English into working shell commands or scripts — you don't need to know the syntax, just describe what you want done."
           />
 
           <ToolCard
@@ -1512,17 +1511,17 @@ function ArticleApp() {
 
           <ToolCard
             icon="📊"
-            name="Databricks Genie & AI/BI"
+            name="Databricks"
             access="Available to data teams"
-            tagline="Natural language interface for your data — no SQL required"
+            tagline="Natural language access to AutoStore's datalake — from broad exploration to focused analysis"
             color="#d97706"
             uses={[
-              "Genie: Ask questions about company data in plain English — it writes and runs the SQL for you",
-              "AI/BI Dashboards: Build smart dashboards where users can ask follow-up questions naturally",
-              "Data exploration: 'What were the top 10 customers by revenue last quarter?' — just type it",
-              "Automated insights: Surfaces patterns and anomalies in your data without manual querying",
+              "Databricks AI/BI (One): Prompt directly across AutoStore's entire datalake in plain English — 'What is the trend for order completion rates by region over the last 6 months?' — no SQL, no analyst required",
+              "Genie Spaces: Topic-specific AI data assistants — each Space is pre-configured for a particular domain (Supply Chain, Sales, Operations) and understands the relevant tables, metrics, and terminology",
+              "From question to insight: Business users can get answers without knowing which tables exist or how to write a query — type the question, Genie writes and runs the SQL, returns the result",
+              "AI/BI Dashboards: Build smart dashboards where users can ask natural language follow-up questions directly in the dashboard view",
             ]}
-            tip="Genie is designed for business users who aren't SQL experts. If you've ever needed to ask a data analyst for a number, Genie may be able to give it to you directly — especially for structured, well-documented data in your lakehouse."
+            tip="Genie Spaces are the fastest path to value for domain experts. Instead of a generic 'ask anything' interface, a Space is pre-loaded with the right context for your area — ask your data team if there's a Space set up for your domain, or request one."
           />
 
           <ToolCard

@@ -417,29 +417,28 @@ export default function App() {
             tagline="AI built into the tools you already use every day"
             color="#0284c7"
             uses={[
-              "Word & PowerPoint: Draft documents, summarize long reports, rewrite content in different tones",
-              "Excel: Analyze data in plain language — \"show me the trend for Q4 by region\" — no formulas needed",
-              "Outlook: Summarize email threads, draft replies, surface action items",
-              "Teams: Real-time meeting transcription, auto-summaries, action items from any meeting",
-              "Copilot chat: Semantic search across all your files, emails, and meetings in one place",
+              "Meeting transcriptions & summaries: Every Teams meeting can be automatically transcribed and summarised — who said what, what was decided, what actions were assigned",
+              "Custom summaries: Go beyond the default. Prompt Copilot to structure it your way — \"Summarise as facilitator notes with: 1) Decisions made, 2) Actions with owner and deadline, 3) Parking lot items\"",
+              "Facilitator notes: Before a workshop, ask Copilot to draft an agenda and talking points. After, use it to turn the transcript into structured notes ready to share with the team",
+              "Build your own agent: In Microsoft Copilot Studio, create a custom agent trained on your own documents — a team FAQ bot, an onboarding guide, a process assistant — no coding required",
+              "Copilot Notebook: An open-ended AI workspace inside Microsoft 365 — paste in a doc, a transcript, or raw notes and have a conversation with the content",
             ]}
-            tip="Teams meeting summaries are one of the highest-ROI uses. Ask Copilot to summarize any meeting you missed — it pulls from the transcript and identifies decisions and action items. You can also ask follow-up questions about what was discussed."
+            tip="Try this right now: open any recent Teams meeting, click the Copilot button, and paste in: \"Give me facilitator notes with decisions, actions by owner, and open questions.\" The difference between the default summary and a prompted one is significant."
           />
 
           <ToolCard
             icon="⌨️"
             name="GitHub Copilot"
             access="Available to developers"
-            tagline="An AI pair programmer that lives inside your editor"
+            tagline="An AI pair programmer in your editor — and a tool-builder in your terminal"
             color="#7c3aed"
             uses={[
-              "Inline completions: Suggests the next line or entire block of code as you type",
-              "Chat: Ask questions about your codebase, explain unfamiliar code, suggest refactors",
-              "Test generation: Describe the behavior you want tested and it writes the unit tests",
-              "PR descriptions: Auto-generates pull request summaries from the diff",
-              "Multi-line completions: Write a comment describing what you need, get the full implementation",
+              "Copilot in VS Code: Code completions, inline edits, and a chat interface that understands your actual codebase — explain, refactor, test, and debug without leaving the editor",
+              "GitHub Copilot CLI: Use AI in the terminal to generate shell commands, scripts, and automation from plain English — 'create a script that monitors disk usage and alerts when above 80%'",
+              "Build presentations and reports: This very page was built using GitHub Copilot CLI — describe what you want to create and let it generate the scaffolding, code, and content",
+              "Build tools and software: Describe a tool you need, have Copilot generate the implementation, iterate in plain language — useful for internal scripts, dashboards, and automation",
             ]}
-            tip="The chat interface in your IDE is underrated. Select a function and ask 'What edge cases does this miss?' or 'Explain why this might fail at scale.' You get a response grounded in your actual code — not generic advice."
+            tip="The CLI use case is underrated for non-developers too. 'gh copilot suggest' turns plain English into working shell commands or scripts — you don't need to know the syntax, just describe what you want done."
           />
 
           <ToolCard
@@ -460,17 +459,17 @@ export default function App() {
 
           <ToolCard
             icon="📊"
-            name="Databricks Genie & AI/BI"
+            name="Databricks"
             access="Available to data teams"
-            tagline="Natural language interface for your data — no SQL required"
+            tagline="Natural language access to AutoStore's datalake — from broad exploration to focused analysis"
             color="#d97706"
             uses={[
-              "Genie: Ask questions about company data in plain English — it writes and runs the SQL for you",
-              "AI/BI Dashboards: Build smart dashboards where users can ask follow-up questions naturally",
-              "Data exploration: 'What were the top 10 customers by revenue last quarter?' — just type it",
-              "Automated insights: Surfaces patterns and anomalies in your data without manual querying",
+              "Databricks AI/BI (One): Prompt directly across AutoStore's entire datalake in plain English — 'What is the trend for order completion rates by region over the last 6 months?' — no SQL, no analyst required",
+              "Genie Spaces: Topic-specific AI data assistants — each Space is pre-configured for a particular domain (Supply Chain, Sales, Operations) and understands the relevant tables, metrics, and terminology",
+              "From question to insight: Business users can get answers without knowing which tables exist or how to write a query — type the question, Genie writes and runs the SQL, returns the result",
+              "AI/BI Dashboards: Build smart dashboards where users can ask natural language follow-up questions directly in the dashboard view",
             ]}
-            tip="Genie is designed for business users who aren't SQL experts. If you've ever needed to ask a data analyst for a number, Genie may be able to give it to you directly — especially for structured, well-documented data in your lakehouse."
+            tip="Genie Spaces are the fastest path to value for domain experts. Instead of a generic 'ask anything' interface, a Space is pre-loaded with the right context for your area — ask your data team if there's a Space set up for your domain, or request one."
           />
 
           <ToolCard
