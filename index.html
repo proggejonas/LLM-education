@@ -712,6 +712,102 @@ function PromptAntiPatterns() {
 }
 
 // ═══════════════════════════════════════
+// ACT 1-3 COMPONENTS
+// ═══════════════════════════════════════
+
+function EmergenceViz() {
+  const examples = [
+    { prompt: "The patient presents with a 3cm lesion on the anterior\u2026", skill: "Medical knowledge", color: C.blue },
+    { prompt: "function calculateTax(income, rate) { return income *\u2026", skill: "Programming logic", color: C.purple },
+    { prompt: "La capital de Francia es\u2026", skill: "Spanish + Geography", color: C.green },
+    { prompt: "If all roses are flowers and some flowers fade quickly, then\u2026", skill: "Logical reasoning", color: C.amber },
+  ];
+  return (
+    <div style={{ maxWidth: 600, margin: "0 auto" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+        {examples.map((e, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "0.6rem 0.8rem", background: e.color + "06", border: `1px solid ${e.color}15`, borderRadius: 10 }}>
+            <div style={{ flex: 1, fontSize: "0.82rem", color: C.body, fontFamily: "'SF Mono', 'Consolas', monospace", lineHeight: 1.4 }}>{e.prompt}</div>
+            <span style={{ color: C.muted, fontSize: "0.9rem" }}>{"\u2192"}</span>
+            <div style={{ flexShrink: 0, padding: "0.3rem 0.7rem", background: e.color + "12", borderRadius: 6, fontSize: "0.82rem", fontWeight: 700, color: e.color, fontFamily: "system-ui" }}>{e.skill}</div>
+          </div>
+        ))}
+      </div>
+      <p style={{ textAlign: "center", fontSize: "0.9rem", color: C.muted, fontStyle: "italic", marginTop: "1rem" }}>
+        Nobody taught it these things. It learned them because they help it predict.
+      </p>
+    </div>
+  );
+}
+
+function DiamondStages() {
+  const stages = [
+    { icon: "\uD83D\uDC8E", title: "Raw", subtitle: "Pre-training", desc: "Show it the internet. Trillions of tokens. Understanding emerges from prediction.", cost: "$1B+", color: C.purple },
+    { icon: "\u2702\uFE0F", title: "Cut", subtitle: "Mid-training", desc: "Fine-tune for skills: instructions, reasoning, coding.", cost: "$10\u2013100M", color: C.blue },
+    { icon: "\u2728", title: "Polish", subtitle: "Post-training", desc: "Humans rate responses. It learns to be helpful and safe.", cost: "$1\u201310M", color: C.green },
+  ];
+  return (
+    <div style={{ maxWidth: 640, margin: "0 auto" }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center", gap: "0.4rem", flexWrap: "wrap" }}>
+        {stages.map((s, i) => (
+          <React.Fragment key={i}>
+            <div style={{ flex: "0 1 170px", textAlign: "center", padding: "0.8rem 0.5rem", background: s.color + "06", borderRadius: 12, border: `1px solid ${s.color}15` }}>
+              <div style={{ fontSize: "2rem", marginBottom: "0.25rem" }}>{s.icon}</div>
+              <div style={{ fontSize: "1.05rem", fontWeight: 700, color: C.text }}>{s.title}</div>
+              <div style={{ fontSize: "0.68rem", fontWeight: 700, color: s.color, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "system-ui", marginBottom: "0.3rem" }}>{s.subtitle}</div>
+              <div style={{ fontSize: "0.78rem", color: C.body, lineHeight: 1.4, marginBottom: "0.2rem" }}>{s.desc}</div>
+              <div style={{ fontSize: "0.72rem", color: C.muted, fontFamily: "system-ui" }}>{s.cost}</div>
+            </div>
+            {i < 2 && <div style={{ fontSize: "1.3rem", color: C.muted, flexShrink: 0, padding: "0 0.15rem", alignSelf: "center" }}>{"\u2192"}</div>}
+          </React.Fragment>
+        ))}
+      </div>
+      <p style={{ textAlign: "center", fontSize: "0.82rem", color: C.muted, marginTop: "1rem", fontStyle: "italic" }}>
+        Only ~5 companies can afford to start from raw. Everyone else refines existing diamonds.
+      </p>
+    </div>
+  );
+}
+
+function SmartestPersonViz() {
+  return (
+    <div style={{ maxWidth: 600, margin: "0 auto" }}>
+      <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", justifyContent: "center" }}>
+        <div style={{ flex: "1 1 240px", maxWidth: 270 }}>
+          <div style={{ fontSize: "0.72rem", fontWeight: 700, color: C.red, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.6rem", fontFamily: "system-ui" }}>{"\u274C"} What most people ask</div>
+          {[
+            { q: "How much is 12\u00d77?", why: "A calculator is faster" },
+            { q: "Tell me a joke", why: "Fine, but not why it exists" },
+            { q: "Summarize this page", why: "OK, but barely scratching the surface" },
+            { q: "What is the weather?", why: "Google is better at this" },
+          ].map((s, i) => (
+            <div key={i} style={{ padding: "0.4rem 0.5rem", borderBottom: `1px solid ${C.border}` }}>
+              <div style={{ fontSize: "0.85rem", color: C.body, fontFamily: "'SF Mono', monospace" }}>{`"${s.q}"`}</div>
+              <div style={{ fontSize: "0.72rem", color: C.muted, fontStyle: "italic" }}>{s.why}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ flex: "1 1 240px", maxWidth: 270 }}>
+          <div style={{ fontSize: "0.72rem", fontWeight: 700, color: C.green, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.6rem", fontFamily: "system-ui" }}>{"\u2705"} What it can actually do</div>
+          {[
+            "Analyse a dataset and find the anomalies",
+            "Draft a technical spec from rough notes",
+            "Redesign a process given constraints",
+            "Review code for bugs and security issues",
+            "Build custom tools and automations",
+          ].map((s, i) => (
+            <div key={i} style={{ padding: "0.4rem 0.5rem", fontSize: "0.85rem", color: C.body, borderBottom: `1px solid ${C.border}` }}>{s}</div>
+          ))}
+        </div>
+      </div>
+      <p style={{ textAlign: "center", fontSize: "0.9rem", color: C.muted, fontStyle: "italic", marginTop: "1rem" }}>
+        Same model. The only difference is how you ask.
+      </p>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
 // SLIDES
 // ═══════════════════════════════════════
 
@@ -729,189 +825,121 @@ const slides = [
         </p>
       </div>
     ),
-    notes: "Opening slide. The goal is to give everyone a real mental model of how AI works \u2014 not just what it does, but why it behaves the way it does. After this session you should be able to evaluate AI tools, understand their limitations, and most importantly know how to get better results from them.",
+    notes: "Opening slide. The goal today is to give everyone a real mental model of how AI works \u2014 not just what it does, but why it behaves the way it does. By the end you should understand what these tools are actually doing, what they are good and bad at, and most importantly how to get much better results from them.",
   },
 
-  // ── PART 01: THE CORE IDEA ──
-  { section: "01 \u00b7 The Core Idea", color: C.blue,
+  // ── PART 01: WHAT IS AN LLM? ──
+  { section: "01 \u00b7 What Is an LLM?", color: C.blue,
     content: () => (
       <div style={{ textAlign: "center" }}>
-        <p style={{ fontSize: "1.1rem", color: C.muted, marginBottom: "1.5rem" }}>Everything starts with one simple idea:</p>
-        <div style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: C.text, lineHeight: 1.2 }}>
-          Predict the next word
+        <p style={{ fontSize: "1.1rem", color: C.muted, marginBottom: "1rem" }}>Every AI tool you use today \u2014 Copilot, ChatGPT, Claude \u2014 runs on the same core idea:</p>
+        <div style={{ fontSize: "clamp(2rem, 5vw, 3rem)", fontWeight: 700, color: C.text, lineHeight: 1.15 }}>
+          Predict the next word.
         </div>
-        <p style={{ fontSize: "1.05rem", color: C.muted, maxWidth: 460, margin: "1rem auto 0" }}>
-          No database. No search engine. No knowledge base inside.<br/>Just: what word probably comes next?
+        <p style={{ fontSize: "1rem", color: C.muted, maxWidth: 460, margin: "1.5rem auto 0" }}>
+          No database. No search engine. No rules.<br/>Just: given everything so far, what word probably comes next?
         </p>
       </div>
     ),
-    notes: "This is the single most important thing to understand. An LLM does exactly one thing: predict the next word. Every capability \u2014 writing, coding, reasoning, translation \u2014 emerges from doing this one thing at massive scale. There are no separate modules for 'language' or 'logic.' It is all prediction.",
+    notes: "This is the single most important concept in the entire presentation. Every LLM does exactly one thing: predict the next token. Writing, coding, reasoning, translation \u2014 these all emerge from doing this incredibly well at massive scale. There are no separate modules for language or logic. It is all prediction. If people remember one thing from today, it should be this.",
   },
 
-  { section: "01 \u00b7 The Core Idea", color: C.blue,
-    title: "But first: text becomes numbers",
-    content: () => <TokenizationViz />,
-    notes: "Before the model can do anything, text becomes numbers \u2014 tokens. Each word or word-piece gets mapped to a number from a vocabulary of 50,000\u2013200,000 tokens. The model never sees text. It sees sequences of integers. This is fundamental and also enables multimodality later \u2014 anything that can be turned into numbers can be processed.",
-  },
-
-  { section: "01 \u00b7 The Core Idea", color: C.blue,
-    title: "The prediction loop",
+  { section: "01 \u00b7 What Is an LLM?", color: C.blue,
+    title: "The prediction machine",
     content: () => <PredictionLoop />,
-    notes: "Walk through the diagram. You give the model a sequence. It runs a forward pass and outputs a probability for every possible next token. 'Paris' gets 42%, 'Lyon' gets 8%, etc. It picks one \u2014 with some controlled randomness \u2014 appends it to the sequence, and loops. One token at a time. The model never plans ahead. It commits to each word before thinking about the next.",
+    notes: "Walk through the diagram. You give the model some text. It runs it through billions of parameters and outputs a probability for every possible next word. Paris gets 42 percent, Lyon gets 8 percent, and so on. It picks one \u2014 usually the most likely, with some controlled randomness \u2014 appends it to the sequence, and loops. One word at a time. The model never plans ahead. It commits to each word before thinking about the next. This is why it can sometimes start a sentence well and then go off the rails.",
   },
 
-  { section: "01 \u00b7 The Core Idea", color: C.blue,
-    title: "Why prediction creates intelligence",
+  { section: "01 \u00b7 What Is an LLM?", color: C.blue,
+    title: "Knowledge as a side effect",
+    content: () => <EmergenceViz />,
+    notes: "Here is the remarkable thing. To predict medical text well, you need medical knowledge. To predict the next line of code, you need programming logic. To predict Spanish, you need to know Spanish and the topic being discussed. Nobody taught the model any of these things explicitly. The knowledge emerged because having it helps the model predict better. This also explains why it knows so much \u2014 it was trained on text about essentially every topic humans have ever written about.",
+  },
+
+  { section: "01 \u00b7 What Is an LLM?", color: C.blue,
+    title: "Brilliant and wrong \u2014 for the same reason",
     content: () => (
       <div style={{ maxWidth: 560, margin: "0 auto" }}>
-        <div style={{ fontSize: "1.4rem", fontWeight: 700, color: C.text, textAlign: "center", marginBottom: "0.75rem", lineHeight: 1.3 }}>
-          Predicting text well requires understanding<br/>the world that produced it
+        <div style={{ textAlign: "center", marginBottom: "1.25rem" }}>
+          <div style={{ fontSize: "1.2rem", fontWeight: 700, color: C.text, lineHeight: 1.3 }}>
+            It always produces text that <span style={{ color: C.blue }}>sounds right</span>
+          </div>
         </div>
-        <p style={{ textAlign: "center", color: C.muted, fontSize: "0.95rem", marginBottom: "1.5rem" }}>
-          These skills were never programmed in \u2014 they emerged from prediction at scale:
-        </p>
-        <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", justifyContent: "center" }}>
-          {["Grammar", "Geography", "Logic", "Code", "Math", "Science", "Languages", "Common sense", "Creativity"].map((s, i) => (
-            <span key={i} style={{ padding: "0.45rem 1rem", borderRadius: 8, fontSize: "0.9rem", background: C.blue + "10", color: C.blue, fontWeight: 600, fontFamily: "system-ui" }}>{s}</span>
-          ))}
+        <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <div style={{ flex: "1 1 220px", maxWidth: 250, padding: "1rem", background: C.green + "08", borderRadius: 10, border: `1px solid ${C.green}20` }}>
+            <div style={{ fontSize: "1.3rem", marginBottom: "0.3rem" }}>{"\u2705"}</div>
+            <div style={{ fontSize: "0.88rem", fontWeight: 700, color: C.text, marginBottom: "0.3rem" }}>When it has the knowledge</div>
+            <div style={{ fontSize: "0.82rem", color: C.body, lineHeight: 1.5 }}>Fluent writing, deep knowledge, working code, logical reasoning, creative ideas</div>
+          </div>
+          <div style={{ flex: "1 1 220px", maxWidth: 250, padding: "1rem", background: C.red + "08", borderRadius: 10, border: `1px solid ${C.red}20` }}>
+            <div style={{ fontSize: "1.3rem", marginBottom: "0.3rem" }}>{"\u274C"}</div>
+            <div style={{ fontSize: "0.88rem", fontWeight: 700, color: C.text, marginBottom: "0.3rem" }}>When it does not</div>
+            <div style={{ fontSize: "0.82rem", color: C.body, lineHeight: 1.5 }}>Hallucination, confident errors, invented citations, made-up numbers, no self-doubt</div>
+          </div>
+        </div>
+        <div style={{ textAlign: "center", marginTop: "1.25rem", padding: "0.6rem 1rem", background: "#f8f9fa", borderRadius: 8 }}>
+          <span style={{ fontSize: "0.9rem", color: C.body }}>Optimised to produce <strong>likely</strong> text, not <strong>verified</strong> text</span>
         </div>
       </div>
     ),
-    notes: "This is the remarkable part. To predict 'The capital of France is...' you need geography. To predict the next line of code, you need programming logic. Nobody taught the model these things explicitly \u2014 they emerged because knowing them helps predict text better. The knowledge is a side effect of prediction.",
+    notes: "Both the brilliance and the errors come from the same root cause. It produces text that sounds right \u2014 because that is literally what it was trained to do. When it has seen enough examples of a topic, the output is genuinely useful. When it has not, or when the topic requires precision it does not have, it still produces confident fluent text \u2014 but it can be completely wrong. This is hallucination. It is not lying. It is predicting what the right answer would sound like. Once you understand this, you know exactly when to trust it and when to verify.",
   },
 
-  { section: "01 \u00b7 The Core Idea", color: C.blue,
-    title: "Same root cause, different outcomes",
+  // ── PART 02: HOW IT WAS MADE ──
+  { section: "02 \u00b7 How It Was Made", color: C.purple,
+    title: "Cutting the diamond",
+    content: () => <DiamondStages />,
+    notes: "Think of building an LLM like cutting a diamond. Phase one \u2014 raw: you show it trillions of words from the internet. It learns to predict, and world knowledge emerges as a side effect. This is absurdly expensive \u2014 over a billion dollars. Only about five companies can afford this from scratch: OpenAI, Google, Anthropic, Meta, and maybe one or two others. Phase two \u2014 cut: fine-tune it for specific abilities. Teach it to follow instructions, reason step by step, write code. Phase three \u2014 polish: humans rate thousands of responses. The model learns what helpful, safe, useful behaviour looks like. This is where it transforms from a text-completion engine into the assistant you talk to.",
+  },
+
+  // ── PART 03: FROM BRAIN TO BODY ──
+  { section: "03 \u00b7 From Brain to Body", color: C.red,
     content: () => (
-      <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", maxWidth: 560, margin: "0 auto" }}>
-        <div style={{ flex: "1 1 220px" }}>
-          <div style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: C.green, marginBottom: "0.75rem", fontFamily: "system-ui" }}>{"\u2713"} Strengths</div>
-          {["Fluent natural language", "Broad knowledge", "Reasoning chains", "Code generation", "Creative writing", "Multi-language"].map((s, i) => (
-            <div key={i} style={{ padding: "0.45rem 0", fontSize: "0.95rem", color: C.body, borderBottom: `1px solid ${C.border}` }}>{s}</div>
-          ))}
+      <div style={{ textAlign: "center", maxWidth: 520, margin: "0 auto" }}>
+        <div style={{ fontSize: "3rem", marginBottom: "0.75rem" }}>{"\uD83E\uDDE0"}</div>
+        <div style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: C.text, lineHeight: 1.25, marginBottom: "1rem" }}>
+          A brain in a jar
         </div>
-        <div style={{ flex: "1 1 220px" }}>
-          <div style={{ fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: C.red, marginBottom: "0.75rem", fontFamily: "system-ui" }}>{"\u2717"} Weaknesses</div>
-          {["Hallucination", "No live knowledge", "Can\u2019t take actions", "No persistent memory", "Bad at precise math", "Doesn\u2019t know what it doesn\u2019t know"].map((s, i) => (
-            <div key={i} style={{ padding: "0.45rem 0", fontSize: "0.95rem", color: C.body, borderBottom: `1px solid ${C.border}` }}>{s}</div>
-          ))}
-        </div>
-        <p style={{ width: "100%", textAlign: "center", fontSize: "0.9rem", color: C.muted, fontStyle: "italic", marginTop: "0.5rem" }}>
-          Optimised to produce <strong>likely</strong> text, not <strong>verified</strong> text
+        <p style={{ fontSize: "1rem", color: C.body, maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
+          An LLM alone is incredibly smart but completely helpless.
+        </p>
+        <p style={{ fontSize: "0.95rem", color: C.muted, maxWidth: 400, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
+          It cannot browse the web. It cannot run code.<br/>It cannot read your files. It cannot remember yesterday.
+        </p>
+        <p style={{ fontSize: "1rem", color: C.body, fontStyle: "italic", marginTop: "1.25rem" }}>
+          To be useful, a brain needs a body.
         </p>
       </div>
     ),
-    notes: "Both columns come from the same thing. It produces text that sounds right \u2014 that is the strength (fluency, creativity). It produces text that sounds right even when it is wrong \u2014 that is the weakness (hallucination). It has no mechanism to verify truth, only to assess likelihood. Once you understand this, you know exactly when to trust it and when to verify.",
+    notes: "Important framing. The raw LLM can only do text in, text out. It has no tools, no memory, no way to interact with the world. When ChatGPT searches the web, or writes and runs code, that is not the LLM itself. That is an agent framework wrapping the LLM and giving it capabilities. The model provides intelligence. The framework provides the ability to act. This distinction matters when you evaluate AI products \u2014 the agent framework quality matters as much as the underlying model.",
   },
 
-  // ── PART 02: HOW IT GETS BUILT ──
-  { section: "02 \u00b7 How It Gets Built", color: C.purple,
-    content: () => (
-      <div style={{ textAlign: "center" }}>
-        <div style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: C.text, marginBottom: "1rem" }}>Three phases of training</div>
-        <p style={{ fontSize: "1.05rem", color: C.muted, maxWidth: 480, margin: "0 auto" }}>
-          Each phase shapes what the model becomes \u2014 and the cost distribution is dramatic.
-        </p>
-      </div>
-    ),
-    notes: "Understanding training is key to understanding behaviour. There are three main phases with very different purposes and costs. Almost everything goes into phase one.",
-  },
-
-  { section: "02 \u00b7 How It Gets Built", color: C.purple,
-    title: "Where the money goes",
-    content: () => <CostBreakdown />,
-    notes: "Look at the proportions. Pretraining is 90%+ of the total cost \u2014 hundreds of millions to over a billion dollars. This is why only about five companies can build frontier models from scratch: Anthropic, OpenAI, Google, Meta, and a few others. Everything after is refinement \u2014 important but much cheaper in compute.",
-  },
-
-  { section: "02 \u00b7 How It Gets Built", color: C.purple,
-    title: "Pretraining: how the model learns",
-    content: () => <GradientDescentViz />,
-    notes: "The model starts with completely random weights \u2014 billions of numbers, all random. Feed it trillions of tokens, it predicts the next one. Each time it is wrong, nudge all the weights in the direction that would have been more correct. This is gradient descent \u2014 like a ball rolling downhill on a complex landscape. After billions of steps, grammar, facts, reasoning, code \u2014 all emerge as side effects of minimising prediction error.",
-  },
-
-  { section: "02 \u00b7 How It Gets Built", color: C.purple,
-    title: "Post-training: making it useful",
-    content: () => <RLHFPipeline />,
-    notes: "The raw pretrained model just completes text \u2014 it does not have conversations. Post-training fixes this in three steps. First, supervised fine-tuning: humans demonstrate ideal assistant behaviour. Then reward modelling: train a separate model to judge response quality. Finally, reinforcement learning: optimise the LLM to produce responses that score well. This is where the model becomes a helpful, safe assistant.",
-  },
-
-  // ── PART 03: UNDER THE HOOD ──
-  { section: "03 \u00b7 Under the Hood", color: C.cyan,
-    title: "Attention: how context shapes meaning",
-    content: () => <AttentionViz />,
-    notes: "This is the core mechanism inside the transformer. For every word, the model asks: which other words in this sequence matter for understanding me? It computes attention scores between all word pairs. Here, 'it' needs to figure out what it refers to. The attention mechanism learns that 'mat' connects strongly because of 'soft.' Nobody programmed this rule. The model learned it from billions of examples.",
-  },
-
-  { section: "03 \u00b7 Under the Hood", color: C.cyan,
-    title: "Temperature: same model, different behaviour",
-    content: () => <TemperatureViz />,
-    notes: "Practical detail worth understanding. Temperature controls how the model samples from its probability distribution. Low: sticks to high-probability words \u2014 focused, predictable. Good for factual questions and code. High: lets less likely words through \u2014 creative, surprising. Good for brainstorming. Same model, same input \u2014 one parameter changes the behaviour entirely.",
-  },
-
-  // ── PART 04: SCALING UP ──
-  { section: "04 \u00b7 Scaling Up", color: C.green,
-    title: "Mixture of Experts: be big but stay fast",
-    content: () => <MoEDiagram />,
-    notes: "The early approach was: make it bigger. But cost scales brutally. Mixture of Experts is one of the clever alternatives. Split the model into specialist sub-networks with a router. Each token goes to only 2\u20133 relevant experts. Huge total knowledge, but fast because only a fraction activates per query. Like a hospital with specialists \u2014 you only see the relevant ones. Most frontier models now use this.",
-  },
-
-  { section: "04 \u00b7 Scaling Up", color: C.green,
-    title: "Distillation: big knowledge, small package",
-    content: () => <DistillationViz />,
-    notes: "Train a small model to mimic a large model's outputs. Get 80\u201390% of the performance at a fraction of the size and cost. This is how AI ends up on phones. Related concept: test-time compute \u2014 instead of making the model bigger at training time, let it think longer at inference time. Step-by-step reasoning, chain-of-thought. A smaller model that thinks carefully can match a larger model that answers immediately.",
-  },
-
-  { section: "04 \u00b7 Scaling Up", color: C.green,
-    title: "Everything becomes tokens",
-    content: () => <MultimodalViz />,
-    notes: "Text becomes tokens. Images get chopped into patches \u2014 each patch becomes a token. Audio waveforms become tokens. Once everything is tokens, they flow through the same architecture. There are not separate vision and language systems bolted together. It is one unified system processing a mixed stream of tokens. This is why you can show it a photo and ask about it.",
-  },
-
-  // ── PART 05: FROM BRAIN TO BODY ──
-  { section: "05 \u00b7 From Brain to Body", color: C.red,
-    title: "A brain needs a body",
+  { section: "03 \u00b7 From Brain to Body", color: C.red,
+    title: "The agent loop",
     content: () => <AgentLoopViz />,
-    notes: "An LLM alone is a brain in a jar. Smart, but it cannot see, act, or remember. An agent wraps it with tools, memory, and a planning loop. The core cycle: Think \u2014 what needs to be done? Act \u2014 call a tool. Observe \u2014 look at the result. Then loop. This is how Claude searches the web, writes and runs code, creates documents. Not magic \u2014 a loop of reasoning and tool use.",
+    notes: "Here is how agents actually work. Think: what needs to be done? Act: call a tool \u2014 search the web, run code, read a file, call an API. Observe: look at the result. Then loop. This is exactly how GitHub Copilot edits code, how ChatGPT browses the web, how Claude writes and tests programs. It is not magic. It is a loop of reasoning and tool use. The quality of the tools available, and how well the framework orchestrates them, determines what the agent can actually accomplish.",
   },
 
-  { section: "05 \u00b7 From Brain to Body", color: C.red,
-    title: "The core insight",
-    content: () => (
-      <div style={{ textAlign: "center", maxWidth: 520, margin: "0 auto" }}>
-        <div style={{ fontSize: "1.5rem", fontWeight: 700, color: C.text, lineHeight: 1.3, marginBottom: "1.5rem" }}>
-          The LLM provides reasoning.<br/>The agent framework provides capability.
-        </div>
-        <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 200px", padding: "1rem", background: "#fef2f2", borderRadius: 10 }}>
-            <div style={{ fontSize: "1.5rem", marginBottom: "0.3rem" }}>{"\uD83E\uDDE0"}</div>
-            <div style={{ fontSize: "0.9rem", fontWeight: 700, color: C.text }}>Without agent framework</div>
-            <div style={{ fontSize: "0.85rem", color: C.muted, marginTop: "0.25rem" }}>Smart but cannot do anything</div>
-          </div>
-          <div style={{ flex: "1 1 200px", padding: "1rem", background: "#f0fdf4", borderRadius: 10 }}>
-            <div style={{ fontSize: "1.5rem", marginBottom: "0.3rem" }}>{"\uD83E\uDD16"}</div>
-            <div style={{ fontSize: "0.9rem", fontWeight: 700, color: C.text }}>With agent framework</div>
-            <div style={{ fontSize: "0.85rem", color: C.muted, marginTop: "0.25rem" }}>Smart and can act in the world</div>
-          </div>
-        </div>
-      </div>
-    ),
-    notes: "Neither is useful alone. The model provides intelligence. The agent framework provides the ability to apply it. This is key for evaluating AI products: it is not just about which model is 'smartest.' The quality of the agent framework, the tools available, the memory system \u2014 all matter as much as the base model quality.",
-  },
-
-  { section: "05 \u00b7 From Brain to Body", color: C.red,
-    title: "A spectrum of autonomy",
+  { section: "03 \u00b7 From Brain to Body", color: C.red,
+    title: "Where are we today?",
     content: () => <UsageSpectrum />,
-    notes: "Chat: you type, it responds. Copilot: AI embedded in your tools. Agent: autonomous task execution. Multi-agent: teams of AI collaborating. Platform: AI in business infrastructure. Most people are in the first two levels. The industry is moving toward the middle. The right level depends on the task, the stakes, and how much you need to verify.",
+    notes: "Think of this as a spectrum of autonomy. Chat: you type, it responds. Copilot: AI embedded in your tools, helping as you work. Agent: autonomous task execution with tool use. Multi-agent: teams of AI collaborating on complex tasks. Platform: AI built into business infrastructure. Most of us are at the first two levels today. The industry is moving rapidly toward agents. The right level depends on the task, the stakes, and how much you need to verify the output.",
   },
 
-  // ── PART 06: THE INPUT IS EVERYTHING ──
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
+  // ── PART 04: THE INPUT IS EVERYTHING ──
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
+    title: "You have access to the smartest person in the world",
+    content: () => <SmartestPersonViz />,
+    notes: "This is the bridge to the most practical part of the talk. Most people have access to an incredibly powerful tool and use a tiny fraction of its capability. Not because the tool is limited, but because of how they ask. The left column is fine \u2014 but it is like hiring a world-class analyst to do basic arithmetic. The right column shows tasks where AI genuinely saves hours and often produces better output than most people could alone. Same model in both columns. The only difference is the input.",
+  },
+
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     content: () => (
       <div style={{ textAlign: "center", maxWidth: 520, margin: "0 auto" }}>
-        <div style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: C.text, lineHeight: 1.2, marginBottom: "1rem" }}>
-          What comes out<br/>depends on what goes in
+        <div style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: C.text, lineHeight: 1.2, marginBottom: "1rem" }}>
+          What comes out<br/>depends entirely on what goes in
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", margin: "1.5rem 0" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", margin: "1.5rem 0" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem" }}>
             <div style={{ padding: "0.5rem 1rem", background: C.red + "10", borderRadius: 8, border: `1px solid ${C.red}20` }}>
               <span style={{ fontSize: "0.85rem", color: C.red, fontFamily: "system-ui", fontWeight: 600 }}>Vague input</span>
@@ -922,12 +950,12 @@ const slides = [
             </div>
             <span style={{ fontSize: "1.1rem", color: C.muted }}>{"\u2192"}</span>
             <div style={{ padding: "0.5rem 1rem", background: C.red + "10", borderRadius: 8, border: `1px solid ${C.red}20` }}>
-              <span style={{ fontSize: "0.85rem", color: C.red, fontFamily: "system-ui", fontWeight: 600 }}>Vague output</span>
+              <span style={{ fontSize: "0.85rem", color: C.red, fontFamily: "system-ui", fontWeight: 600 }}>Generic output</span>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.75rem" }}>
             <div style={{ padding: "0.5rem 1rem", background: C.green + "10", borderRadius: 8, border: `1px solid ${C.green}20` }}>
-              <span style={{ fontSize: "0.85rem", color: C.green, fontFamily: "system-ui", fontWeight: 600 }}>Clear input</span>
+              <span style={{ fontSize: "0.85rem", color: C.green, fontFamily: "system-ui", fontWeight: 600 }}>Specific input</span>
             </div>
             <span style={{ fontSize: "1.1rem", color: C.muted }}>{"\u2192"}</span>
             <div style={{ padding: "0.4rem 0.7rem", background: "#f1f5f9", borderRadius: 8, border: `1px solid ${C.border}` }}>
@@ -940,14 +968,14 @@ const slides = [
           </div>
         </div>
         <p style={{ fontSize: "0.95rem", color: C.muted, fontStyle: "italic" }}>
-          Prompting is the single most important skill for getting value from AI
+          Prompting is the most important skill for getting value from AI
         </p>
       </div>
     ),
-    notes: "This is arguably the most practical section. Everything so far explains why the model behaves the way it does. This section is about how to work with it effectively. The core insight: the model is trying to predict what comes next based on what you gave it. The more specific and structured your input, the better the prediction \u2014 and therefore the output. Prompting is not a trick. It is the primary interface.",
+    notes: "This is the central message of the prompting section. The LLM is a vast pool of knowledge and capability. But your prompt determines what comes out. A vague question gets a vague answer. A specific, well-structured question gets a specific, useful answer. The model did not get smarter between the two. You just asked better. This means prompting is not a nice-to-have skill \u2014 it is THE skill for working with AI effectively.",
   },
 
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     title: "Vague in, vague out",
     content: () => (
       <PromptComparison
@@ -961,30 +989,30 @@ const slides = [
         }}
       />
     ),
-    notes: "This is the most common failure mode. The left prompt gives the model almost nothing to work with, so it produces generic filler. The right prompt gives it audience, context, structure, and tone \u2014 so the output is immediately useful. The same model produced both. The difference is entirely in the input.",
+    notes: "Concrete example. Same model, same day, same everything. The left prompt gives it almost nothing to work with: what kind of report? For whom? What data? What format? It has to guess, and it guesses generically. The right prompt specifies audience, context, structure, and tone. The output is immediately useful. This is not about tricking the AI. It is about giving it the information it needs to do the job well.",
   },
 
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     title: "The anatomy of a good prompt",
     content: () => <PromptFramework />,
-    notes: "Four elements. Goal: what do you actually want? Context: what does the AI need to know to do this well? Constraints: what are the boundaries \u2014 length, tone, audience, what to avoid? Format: what should the output look like? You do not need all four every time, but the more you provide, the less the model has to guess \u2014 and guessing is where it goes wrong.",
+    notes: "Four elements that make prompts effective. Goal: what do you actually want? Context: what does the AI need to know to do this well? Constraints: what are the boundaries \u2014 length, tone, audience, what to avoid? Format: what should the output look like? You do not need all four every time. But the more you provide, the less the model has to guess. And guessing is where it goes wrong.",
   },
 
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
-    title: "The most powerful trick",
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
+    title: "The most powerful trick: let it ask YOU",
     content: () => (
       <ConversationFlow messages={[
         { from: "user", text: "Help me prepare for the quarterly business review." },
-        { from: "ai", text: "Happy to help. Before I start, a few questions:\n\n1. Who is the audience \u2014 leadership, your team, or cross-functional?\n2. What is the main message you want to land?\n3. What data do you have available?\n4. How long should the presentation be?" },
+        { from: "ai", text: "Before I start, a few questions:\n\n1. Who is the audience?\n2. What is the main message you want to land?\n3. What data do you have?\n4. How long is the presentation?" },
         { from: "user", text: "Leadership. Main message: behind on revenue but ahead on new customer acquisition. I have the Q3 dashboard. 15 minutes." },
         { from: "ai", text: "Got it. Here is a suggested structure for a 15-minute leadership review\u2026" },
       ]} />
     ),
-    notes: "This is the single most underused technique. Instead of trying to write the perfect prompt yourself, tell the AI: 'Before you start, ask me any questions you need to do this well.' The model is very good at identifying what information it is missing. This turns a monologue into a dialogue \u2014 and the output quality jumps dramatically. You can also prompt: 'Ask me clarifying questions one at a time until you have what you need.'",
+    notes: "The single most underused prompting technique. Instead of trying to write the perfect prompt, tell the AI: before you start, ask me any questions you need to do this well. The model is excellent at identifying what information is missing. This turns a monologue into a dialogue and the output quality jumps dramatically. You can also say: ask me questions one at a time until you have what you need.",
   },
 
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
-    title: "Establish the goal before you build",
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
+    title: "Plan before you build",
     content: () => (
       <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center", maxWidth: 620, margin: "0 auto" }}>
         <div style={{ flex: "1 1 260px", maxWidth: 290 }}>
@@ -992,7 +1020,7 @@ const slides = [
           {[
             { step: "1", text: "\"Build me a dashboard\"" },
             { step: "2", text: "\"No, not like that\"" },
-            { step: "3", text: "\"Closer but still not right\"" },
+            { step: "3", text: "\"Closer but still wrong\"" },
             { step: "4", text: "\"Let me start over\u2026\"" },
           ].map((s, i) => (
             <div key={i} style={{ display: "flex", gap: "0.5rem", padding: "0.4rem 0", borderBottom: `1px solid ${C.border}`, alignItems: "flex-start" }}>
@@ -1007,8 +1035,8 @@ const slides = [
           {[
             { step: "1", text: "Who is this for? \u2192 Ops team" },
             { step: "2", text: "What decisions does it support? \u2192 Weekly priorities" },
-            { step: "3", text: "What does 'good' look like? \u2192 Trends + top bottlenecks" },
-            { step: "\u2192", text: "Now build: clear spec, right the first time" },
+            { step: "3", text: "What does good look like? \u2192 Trends + top bottlenecks" },
+            { step: "\u2192", text: "Now build: clear spec, nailed first time" },
           ].map((s, i) => (
             <div key={i} style={{ display: "flex", gap: "0.5rem", padding: "0.4rem 0", borderBottom: `1px solid ${C.border}`, alignItems: "flex-start" }}>
               <span style={{ fontSize: "0.7rem", fontWeight: 700, color: C.green, fontFamily: "system-ui", flexShrink: 0, marginTop: "0.15rem" }}>{s.step}</span>
@@ -1019,17 +1047,17 @@ const slides = [
         </div>
       </div>
     ),
-    notes: "This applies to everything from asking for a meeting summary to building software with an AI tool. The natural impulse is to jump straight to 'build me X.' But if you spend even two minutes defining who it is for, what decisions it supports, and what 'good' looks like \u2014 the AI has enough to get it right the first time. Think of it like briefing a colleague: you would not just say 'make a dashboard' \u2014 you would explain the context.",
+    notes: "This applies to everything \u2014 from asking for a meeting summary to building software. The natural impulse is to jump straight to build me X. But spending two minutes defining who it is for, what decisions it supports, and what good looks like gives the AI enough context to get it right the first time. Think of it like briefing a colleague: you would not just say make a dashboard without explaining the context.",
   },
 
-  { section: "06 \u00b7 The Input Is Everything", color: C.indigo,
+  { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     title: "Prompt anti-patterns",
     content: () => <PromptAntiPatterns />,
-    notes: "These are funny but real. 'Make it better' \u2014 better how? The model has to guess, and it will guess wrong. 'Write something about AI' \u2014 gives the model zero constraints, so you get generic content. 'Fix this' with 500 lines and no context \u2014 the model does not know what is broken. 'Be more creative' \u2014 creativity without direction produces randomness, not inspiration. The fix for all of these: be specific.",
+    notes: "These are funny but real. Make it better \u2014 better how? The model has to guess. Write something about AI \u2014 zero constraints means generic filler. Fix this with 500 lines of code and no error description \u2014 the model does not know what is broken. Be more creative \u2014 creativity without direction produces randomness. The fix for all of these: be specific about what you want.",
   },
 
-  // ── PART 07: YOUR TOOLS (PLACEHOLDER) ──
-  { section: "07 \u00b7 Your Tools at AutoStore", color: "#0284c7",
+  // ── PART 05: YOUR TOOLS (PLACEHOLDER) ──
+  { section: "05 \u00b7 Your Tools at AutoStore", color: "#0284c7",
     content: () => (
       <div style={{ textAlign: "center" }}>
         <div style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: C.text, marginBottom: "1rem" }}>What you have access to today</div>
@@ -1039,11 +1067,11 @@ const slides = [
         <p style={{ fontSize: "0.85rem", color: C.muted, marginTop: "1.5rem", fontStyle: "italic" }}>[ Live demos and screenshots ]</p>
       </div>
     ),
-    notes: "This section will be done with live demos and screenshots. Key tools: M365 Copilot (meeting summaries, custom prompts, Copilot Studio agents, Notebook), GitHub Copilot (VS Code, CLI, building tools), Databricks (AI/BI One, Genie Spaces). The article has detailed write-ups for each.",
+    notes: "This section will use live demos and screenshots. Key tools: M365 Copilot for meeting summaries, custom prompts, building agents with Copilot Studio, and Notebook. GitHub Copilot for coding in VS Code, CLI presentations and tools. Databricks for AI/BI One querying across the datalake, and Genie Spaces for specific topics. The article has detailed write-ups for each.",
   },
 
-  // ── PART 08: GOING FURTHER (PLACEHOLDER) ──
-  { section: "08 \u00b7 Going Further", color: "#9333ea",
+  // ── PART 06: GOING FURTHER (PLACEHOLDER) ──
+  { section: "06 \u00b7 Going Further", color: "#9333ea",
     content: () => (
       <div style={{ textAlign: "center" }}>
         <div style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: C.text, marginBottom: "1rem" }}>What you can explore on your own</div>
@@ -1053,7 +1081,7 @@ const slides = [
         <p style={{ fontSize: "0.85rem", color: C.muted, marginTop: "1.5rem", fontStyle: "italic" }}>[ Live demos and screenshots ]</p>
       </div>
     ),
-    notes: "This section will also use live demos. Key message: you do not need to wait for official rollouts. The big three assistants (Claude, ChatGPT, Gemini) all have free tiers. NotebookLM for documents. Perplexity for research. Ollama for local/private use. APIs for automation.",
+    notes: "Also live demos. Key message: you do not need to wait for official rollouts. The big three assistants \u2014 Claude, ChatGPT, Gemini \u2014 all have free tiers. NotebookLM for working with documents. Perplexity for research. Ollama for local and private use. APIs for building your own automations.",
   },
 
   // ── CLOSING ──
@@ -1065,9 +1093,9 @@ const slides = [
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", maxWidth: 440, margin: "0 auto", textAlign: "left" }}>
           {[
-            { num: "1", text: "It is a prediction machine \u2014 powerful but not infallible" },
-            { num: "2", text: "What comes out depends on what you put in \u2014 prompting is the skill" },
-            { num: "3", text: "The tools are here now \u2014 start using them on tasks you know well" },
+            { num: "1", text: "It predicts text \u2014 that explains both the magic and the mistakes" },
+            { num: "2", text: "What comes out depends on what you put in \u2014 prompting is the skill to develop" },
+            { num: "3", text: "The tools are here \u2014 start with tasks where you can judge the output" },
           ].map((s, i) => (
             <div key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
               <span style={{ fontSize: "1.1rem", fontWeight: 700, color: C.blue, fontFamily: "system-ui", flexShrink: 0 }}>{s.num}</span>
@@ -1077,7 +1105,7 @@ const slides = [
         </div>
       </div>
     ),
-    notes: "Three takeaways. First: it predicts text \u2014 that explains both the magic and the failures. Second: the quality of your input determines the quality of the output \u2014 prompting is the most important skill to develop. Third: the tools are available now \u2014 the fastest way to build intuition is to use them on tasks where you can judge the quality of the output.",
+    notes: "Three takeaways. First: it predicts text. That one fact explains both why it is so powerful and why it hallucinates. Second: the quality of your input determines the quality of the output. Prompting is the single most important skill to develop. Third: the tools are available right now. The fastest way to build intuition is to use them on real tasks where you can judge the quality of the output yourself.",
   },
 ];
 
