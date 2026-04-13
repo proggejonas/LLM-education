@@ -423,7 +423,7 @@ export default function App() {
               "Build your own agent: In Microsoft Copilot Studio, create a custom agent trained on your own documents — a team FAQ bot, an onboarding guide, a process assistant — no coding required",
               "Copilot Notebook: An open-ended AI workspace inside Microsoft 365 — paste in a doc, a transcript, or raw notes and have a conversation with the content",
             ]}
-            tip="Try this right now: open any recent Teams meeting, click the Copilot button, and paste in: \"Give me facilitator notes with decisions, actions by owner, and open questions.\" The difference between the default summary and a prompted one is significant."
+            tip={'Try this right now: open any recent Teams meeting, click the Copilot button, and paste in: "Give me facilitator notes with decisions, actions by owner, and open questions." The difference between the default summary and a prompted one is significant.'}
           />
 
           <ToolCard
