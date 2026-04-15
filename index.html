@@ -691,9 +691,9 @@ function ConversationFlow({ messages }) {
 
 function PromptAntiPatterns() {
   const patterns = [
-    { prompt: "Make it better", why: "Better how? Shorter? More formal? More detailed? More creative?", icon: "\uD83E\uDD37" },
-    { prompt: "Write something about AI", why: "For whom? How long? What angle? Blog post or board memo?", icon: "\uD83C\uDF0A" },
-    { prompt: "Fix this", why: "[attaches 500 lines of code with no error description]", icon: "\uD83D\uDD25" },
+    { prompt: "Make it better", why: "The AI equivalent of telling a chef to 'make the food more food'", icon: "\uD83E\uDD37" },
+    { prompt: "Write something about AI", why: "For whom? A 5-year-old? The board? Your cat?", icon: "\uD83C\uDF0A" },
+    { prompt: "Fix this", why: "[pastes 500 lines of code] 'It does not work.' Thanks, that narrows it down.", icon: "\uD83D\uDD25" },
     { prompt: "Be more creative", why: "The AI equivalent of 'draw the rest of the owl'", icon: "\uD83E\uDD89" },
   ];
   return (
@@ -776,10 +776,10 @@ function SmartestPersonViz() {
         <div style={{ flex: "1 1 240px", maxWidth: 270 }}>
           <div style={{ fontSize: "0.72rem", fontWeight: 700, color: C.red, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.6rem", fontFamily: "system-ui" }}>{"\u274C"} What most people ask</div>
           {[
-            { q: "How much is 12\u00d77?", why: "A calculator is faster" },
-            { q: "Tell me a joke", why: "Fine, but not why it exists" },
-            { q: "Summarize this page", why: "OK, but barely scratching the surface" },
-            { q: "What is the weather?", why: "Google is better at this" },
+            { q: "How much is 12\u00d77?", why: "You have a calculator on your phone" },
+            { q: "Draw a cat driving a car", why: "Entertaining, but not exactly ROI" },
+            { q: "Tell me a fun fact", why: "It is not a party trick" },
+            { q: "What is the capital of France?", why: "Congrats, you just built a slow search engine" },
           ].map((s, i) => (
             <div key={i} style={{ padding: "0.4rem 0.5rem", borderBottom: `1px solid ${C.border}` }}>
               <div style={{ fontSize: "0.85rem", color: C.body, fontFamily: "'SF Mono', monospace" }}>{`"${s.q}"`}</div>
@@ -820,12 +820,12 @@ const slides = [
         <h1 style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", fontWeight: 700, letterSpacing: "-0.03em", color: C.text, lineHeight: 1.1, marginBottom: "1rem" }}>
           How AI Actually Works
         </h1>
-        <p style={{ fontSize: "1.15rem", color: C.muted, maxWidth: 480, margin: "0 auto" }}>
-          A practical guide for the AutoStore team
+        <p style={{ fontSize: "1.15rem", color: C.muted, maxWidth: 520, margin: "0 auto" }}>
+          What it actually is, why it makes things up,<br/>and how to get it to stop
         </p>
       </div>
     ),
-    notes: "Opening slide. The goal today is to give everyone a real mental model of how AI works \u2014 not just what it does, but why it behaves the way it does. By the end you should understand what these tools are actually doing, what they are good and bad at, and most importantly how to get much better results from them.",
+    notes: "Welcome everyone. Today I am going to demystify AI. And yes, before you ask, this presentation was partly made with AI. I figured if I am going to tell you how it works, I should probably prove that it does. By the end you will have a real mental model of what these tools are doing, what they are terrible at, and most importantly how to get much better results from them.",
   },
 
   // ── PART 01: WHAT IS AN LLM? ──
@@ -841,19 +841,19 @@ const slides = [
         </p>
       </div>
     ),
-    notes: "This is the single most important concept in the entire presentation. Every LLM does exactly one thing: predict the next token. Writing, coding, reasoning, translation \u2014 these all emerge from doing this incredibly well at massive scale. There are no separate modules for language or logic. It is all prediction. If people remember one thing from today, it should be this.",
+    notes: "This is it. The entire trillion-dollar AI industry is built on autocomplete. Yes, really. Your phone has been doing a much worse version of this for years \u2014 that is why you still send messages about going to the ducking store. But when you scale this up to billions of parameters trained on trillions of words, something remarkable happens. Writing, coding, reasoning \u2014 they all emerge. If people remember one thing from today, it should be: it predicts the next word.",
   },
 
   { section: "01 \u00b7 What Is an LLM?", color: C.blue,
     title: "The prediction machine",
     content: () => <PredictionLoop />,
-    notes: "Walk through the diagram. You give the model some text. It runs it through billions of parameters and outputs a probability for every possible next word. Paris gets 42 percent, Lyon gets 8 percent, and so on. It picks one \u2014 usually the most likely, with some controlled randomness \u2014 appends it to the sequence, and loops. One word at a time. The model never plans ahead. It commits to each word before thinking about the next. This is why it can sometimes start a sentence well and then go off the rails.",
+    notes: "Walk through the diagram. You feed it some text. It outputs a probability for every possible next word. Paris gets 42 percent, Lyon gets 8 percent. It picks one, appends it, and loops. One word at a time. Here is the wild part: it never plans ahead. It commits to each word before thinking about the next. Imagine writing an essay but you can only see one word at a time through a keyhole. That is what these models do \u2014 and somehow they still write better emails than most of us.",
   },
 
   { section: "01 \u00b7 What Is an LLM?", color: C.blue,
     title: "Knowledge as a side effect",
     content: () => <EmergenceViz />,
-    notes: "Here is the remarkable thing. To predict medical text well, you need medical knowledge. To predict the next line of code, you need programming logic. To predict Spanish, you need to know Spanish and the topic being discussed. Nobody taught the model any of these things explicitly. The knowledge emerged because having it helps the model predict better. This also explains why it knows so much \u2014 it was trained on text about essentially every topic humans have ever written about.",
+    notes: "This is where it gets slightly mind-bending. To predict medical text, you need medical knowledge. To predict code, you need programming logic. Nobody sat down and taught it medicine. It just figured it out because knowing medicine helps you finish medical sentences. It learned everything useful as a side effect of being really good at finishing sentences. Kind of like how you accidentally memorised every word to a song you claim to hate. It was trained on text about essentially every topic humans have written about, so it absorbed knowledge about essentially every topic too.",
   },
 
   { section: "01 \u00b7 What Is an LLM?", color: C.blue,
@@ -882,14 +882,14 @@ const slides = [
         </div>
       </div>
     ),
-    notes: "Both the brilliance and the errors come from the same root cause. It produces text that sounds right \u2014 because that is literally what it was trained to do. When it has seen enough examples of a topic, the output is genuinely useful. When it has not, or when the topic requires precision it does not have, it still produces confident fluent text \u2014 but it can be completely wrong. This is hallucination. It is not lying. It is predicting what the right answer would sound like. Once you understand this, you know exactly when to trust it and when to verify.",
+    notes: "Both the brilliance and the errors come from the exact same root cause. It produces text that sounds right \u2014 because that is literally all it was trained to do. When it knows the topic, this is genuinely impressive. When it does not, it becomes the world\u2019s most confident liar. It will cite a research paper that does not exist, by an author who does not exist, published in a journal that does not exist \u2014 and it will do it with the calm authority of a professor who has read it three times. This is not a bug. It is prediction doing exactly what prediction does. It predicts what the right answer would sound like.",
   },
 
   // ── PART 02: HOW IT WAS MADE ──
   { section: "02 \u00b7 How It Was Made", color: C.purple,
     title: "Cutting the diamond",
     content: () => <DiamondStages />,
-    notes: "Think of building an LLM like cutting a diamond. Phase one \u2014 raw: you show it trillions of words from the internet. It learns to predict, and world knowledge emerges as a side effect. This is absurdly expensive \u2014 over a billion dollars. Only about five companies can afford this from scratch: OpenAI, Google, Anthropic, Meta, and maybe one or two others. Phase two \u2014 cut: fine-tune it for specific abilities. Teach it to follow instructions, reason step by step, write code. Phase three \u2014 polish: humans rate thousands of responses. The model learns what helpful, safe, useful behaviour looks like. This is where it transforms from a text-completion engine into the assistant you talk to.",
+    notes: "Think of building an LLM like cutting a diamond. Phase one \u2014 raw: you feed it the entire internet. Everything from Shakespeare to Reddit arguments about whether a hot dog is a sandwich. World knowledge emerges as a side effect. This costs over a billion dollars. Yes, billion with a B. Phase two \u2014 cut: fine-tune it so it actually follows instructions instead of just continuing your sentence into a random Wikipedia article. Phase three \u2014 polish: humans rate thousands of responses so the model learns what being helpful actually looks like. This is where it transforms from a weird text-completion engine into the assistant you talk to. Only about five companies can afford to start from raw.",
   },
 
   // ── PART 03: FROM BRAIN TO BODY ──
@@ -900,18 +900,21 @@ const slides = [
         <div style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.2rem)", fontWeight: 700, color: C.text, lineHeight: 1.25, marginBottom: "1rem" }}>
           A brain in a jar
         </div>
-        <p style={{ fontSize: "1rem", color: C.body, maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
-          An LLM alone is incredibly smart but completely helpless.
+        <p style={{ fontSize: "1rem", color: C.body, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+          Imagine the smartest person who ever lived.
         </p>
-        <p style={{ fontSize: "0.95rem", color: C.muted, maxWidth: 400, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
-          It cannot browse the web. It cannot run code.<br/>It cannot read your files. It cannot remember yesterday.
+        <p style={{ fontSize: "0.95rem", color: C.muted, maxWidth: 440, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
+          Now seal them in a room with no phone, no internet,<br/>no arms, and the memory of a goldfish.
         </p>
-        <p style={{ fontSize: "1rem", color: C.body, fontStyle: "italic", marginTop: "1.25rem" }}>
+        <p style={{ fontSize: "0.95rem", color: C.body, marginTop: "0.75rem" }}>
+          That is an LLM without tools.
+        </p>
+        <p style={{ fontSize: "1rem", color: C.body, fontStyle: "italic", marginTop: "1rem" }}>
           To be useful, a brain needs a body.
         </p>
       </div>
     ),
-    notes: "Important framing. The raw LLM can only do text in, text out. It has no tools, no memory, no way to interact with the world. When ChatGPT searches the web, or writes and runs code, that is not the LLM itself. That is an agent framework wrapping the LLM and giving it capabilities. The model provides intelligence. The framework provides the ability to act. This distinction matters when you evaluate AI products \u2014 the agent framework quality matters as much as the underlying model.",
+    notes: "The analogy is deliberately silly but accurate. The raw LLM can only do text in, text out. It has no tools, no memory, no way to interact with the world. When ChatGPT searches the web or writes code, that is not the model itself \u2014 it is an agent framework wrapping the LLM and giving it hands. The model provides the intelligence. The framework provides the limbs. Without the framework, Einstein is just stuck in a box, monologuing brilliantly to nobody.",
   },
 
   { section: "03 \u00b7 From Brain to Body", color: C.red,
@@ -930,7 +933,7 @@ const slides = [
   { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     title: "You have access to the smartest person in the world",
     content: () => <SmartestPersonViz />,
-    notes: "This is the bridge to the most practical part of the talk. Most people have access to an incredibly powerful tool and use a tiny fraction of its capability. Not because the tool is limited, but because of how they ask. The left column is fine \u2014 but it is like hiring a world-class analyst to do basic arithmetic. The right column shows tasks where AI genuinely saves hours and often produces better output than most people could alone. Same model in both columns. The only difference is the input.",
+    notes: "This is the awkward truth. It is like hiring a world-class consultant \u2014 someone who has read every textbook, every codebase, every business report ever written \u2014 and asking them to draw a funny picture of a cat driving a car. You absolutely can. The cat picture might even be good. But maybe also ask it to help you redesign that process that has been bugging you for two years, or draft that technical spec you have been putting off. Same hourly rate either way. The right column shows where AI genuinely saves hours and produces better output than most people could alone.",
   },
 
   { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
@@ -1053,7 +1056,7 @@ const slides = [
   { section: "04 \u00b7 The Input Is Everything", color: C.indigo,
     title: "Prompt anti-patterns",
     content: () => <PromptAntiPatterns />,
-    notes: "These are funny but real. Make it better \u2014 better how? The model has to guess. Write something about AI \u2014 zero constraints means generic filler. Fix this with 500 lines of code and no error description \u2014 the model does not know what is broken. Be more creative \u2014 creativity without direction produces randomness. The fix for all of these: be specific about what you want.",
+    notes: "Everyone in this room has done at least one of these. I certainly have. Make it better \u2014 that is like going to a restaurant and saying bring me food. Write something about AI \u2014 the model gets zero constraints so it writes the blandest thing possible. Fix this \u2014 my personal favourite. Just 500 lines of code and the phrase it does not work. The model is smart but it is not psychic. Be more creative \u2014 creativity without direction is just randomness with confidence. The fix for all of these: be specific.",
   },
 
   // ── PART 05: YOUR TOOLS (PLACEHOLDER) ──
@@ -1105,7 +1108,7 @@ const slides = [
         </div>
       </div>
     ),
-    notes: "Three takeaways. First: it predicts text. That one fact explains both why it is so powerful and why it hallucinates. Second: the quality of your input determines the quality of the output. Prompting is the single most important skill to develop. Third: the tools are available right now. The fastest way to build intuition is to use them on real tasks where you can judge the quality of the output yourself.",
+    notes: "Three things to take away. First: it predicts text. That one fact explains everything \u2014 both why it writes beautiful prose and why it will confidently tell you the Golden Gate Bridge is in London. Second: what comes out depends on what you put in. Treat it like a very smart but very literal colleague who has never met you before. Third: the tools are here right now. The best way to learn is to use them. Start with something you know well so you can judge the output \u2014 and please, do not paste your passwords into the chat.",
   },
 ];
 
